@@ -21,9 +21,9 @@
 
     <meta name="description" content="每天进步一点点，幸福快乐一辈子。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="玲龍的家">
+<meta property="og:title" content="玲龍的天空">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="玲龍的家">
+<meta property="og:site_name" content="玲龍的天空">
 <meta property="og:description" content="每天进步一点点，幸福快乐一辈子。">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="龍雪">
@@ -37,7 +37,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>玲龍的家</title>
+<title>玲龍的天空</title>
   
 
 
@@ -70,10 +70,10 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">玲龍的家</h1>
+      <h1 class="site-title">玲龍的天空</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">记录我学习和生活的点滴</p>
+      <p class="site-subtitle" itemprop="description">记录学习和生活的点滴进步收获。</p>
   </div>
 
   <div class="site-nav-right">
@@ -124,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -135,7 +135,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -161,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/07/Pr%C3%BCfer%20%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/avatar.jpeg">
@@ -169,17 +169,17 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玲龍的家">
+      <meta itemprop="name" content="玲龍的天空">
       <meta itemprop="description" content="每天进步一点点，幸福快乐一辈子。">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 玲龍的家">
+      <meta itemprop="name" content="undefined | 玲龍的天空">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/05/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/" class="post-title-link" itemprop="url">卡特兰数</a>
+          <a href="/2024/03/07/Pr%C3%BCfer%20%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">prufer序列</a>
         </h2>
 
         <div class="post-meta-container">
@@ -191,7 +191,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-03-05 16:12:57 / Modified: 22:14:07" itemprop="dateCreated datePublished" datetime="2024-03-05T16:12:57+08:00">2024-03-05</time>
+      <time title="Created: 2024-03-07 14:40:30 / Modified: 15:29:10" itemprop="dateCreated datePublished" datetime="2024-03-07T14:40:30+08:00">2024-03-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -213,7 +213,148 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/img/catalannumber2.png"><br><img src="/img/catalandituishi.png"><br><img src="/img/catalanroute.png"></p>
+          <p>$\texttt{prufer}$序列是一个比较实用的东西，一切与度数有关的树上计数问题，都可以用它以及它的性质来解决。</p>
+<h2 id="转化1：从无根树到-texttt-prufer-序列"><a href="#转化1：从无根树到-texttt-prufer-序列" class="headerlink" title="转化1：从无根树到$\texttt{prufer}$序列"></a>转化1：从无根树到$\texttt{prufer}$序列</h2><p>现在，给你一棵树，我们要考虑如何把它变成prefur序列。<br>我们需要重复进行以下操作，直至树中只剩下两个点：</p>
+<ul>
+<li>找到一个度数为 1，且编号最小的点。（其中编号最小保证了后面将会提到的$\texttt{prufer}$序列的唯一对应性，同时也方便从 $\texttt{prufer}$ 序列转化回无根树）</li>
+<li>把这个点的父亲节点加入序列，然后把这个点从树中删除。然后我们就得到了一个长度为 n − 2 的序列，这就是$\texttt{prufer}$序列。</li>
+</ul>
+<p><img src="/img/Prufer1.png"><br>以上面的图为例，我们可以模拟这一过程如下：</p>
+<ul>
+<li>找到4号节点，将其父结点加入序列，然后将其删去。此时序列：{2}。</li>
+<li>找到5号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3}。</li>
+<li>找到3号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1}。</li>
+<li>找到6号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1,2}。</li>
+<li>找到2号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1,2,1}。<br>所以，最后得到的$\texttt{prufer}$序列就是{2,3,1,2,1}。</li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">prufer_code</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) cin &gt;&gt; f[i], d[f[i]] ++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i ++, j ++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j ++;</span><br><span class="line">        p[i] = f[j];</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= n - <span class="number">2</span> &amp;&amp; !--d[p[i]] &amp;&amp; p[i] &lt; j) p[i + <span class="number">1</span>] = f[p[i]], i ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="转化2：从-texttt-prufer-序列到无根树"><a href="#转化2：从-texttt-prufer-序列到无根树" class="headerlink" title="转化2：从$\texttt{prufer}$序列到无根树"></a>转化2：从$\texttt{prufer}$序列到无根树</h2><p>还是以刚才那棵树为例，我们要考虑如何把它的prefur序列变回它本身。</p>
+<p>我们需要重复进行以下操作，直至点集中只剩下两个点：（初始化所有点都在点集中）</p>
+<ul>
+<li>取出$\texttt{prufer}$序列最前面的元素x。</li>
+<li>取出在点集中的、且当前不在$\texttt{prufer}$序列中的最小元素y。（这恰好呼应了前面提到过的选取编号最小的节点）</li>
+<li>在x,y之间连接一条边。（注意前面的取出相当于删除）<br>最后，我们在点集中剩下的两个点中连一条边。<br>显然这有n−1条边，且绝对不会形成环，因此它是一棵树，且就是原树。</li>
+</ul>
+<p>以上面的序列为例，我们可以模拟这一过程如下：</p>
+<ul>
+<li>取出2,4连边。此时$\texttt{prufer}$序列：{3,1,2,1}，点集：{1,2,3,5,6,7}。</li>
+<li>取出3,5连边。此时$\texttt{prufer}$序列：{1,2,1}，点集：{1,2,3,6,7}。</li>
+<li>取出1,3连边。此时$\texttt{prufer}$序列：{2,1}，点集：{1,2,6,7}。</li>
+<li>取出2,6连边。此时$\texttt{prufer}$序列：{1}，点集：{1,2,7}。</li>
+<li>取出1,2连边。此时$\texttt{prufer}$序列：{}，点集：{1,7}。</li>
+</ul>
+<p>最后再在1,7间连边，就可以得到原树了。</p>
+<p>代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">prufer_decode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i ++) cin &gt;&gt; p[i], d[p[i]] ++;</span><br><span class="line">    p[n - <span class="number">1</span>] = n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt; n; i ++, j ++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j ++;</span><br><span class="line">        f[j] = p[i];</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n &amp;&amp; !--d[p[i]] &amp;&amp; p[i] &lt; j) f[p[i]] = p[i + <span class="number">1</span>], i ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="texttt-prufer-序列的性质及相关结论"><a href="#texttt-prufer-序列的性质及相关结论" class="headerlink" title="$\texttt{prufer}$序列的性质及相关结论"></a>$\texttt{prufer}$序列的性质及相关结论</h2><blockquote>
+<p><strong>重要性质：$\texttt{prufer}$序列与无根树一一对应。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>度数为$d_i$的节点会在$\texttt{prufer}$序列中出现$d_i−1$次。</strong></p>
+</blockquote>
+<ul>
+<li>当某个节点度数为1时，会直接被删掉，否则每少掉一个相邻的节点，它就会在序列中出现1次。因此共出现$d_i−1$次。</li>
+</ul>
+<blockquote>
+<p><strong>一个$n$个节点的完全图的生成树个数为$n^{n−2}$。</strong></p>
+</blockquote>
+<ul>
+<li>对于一个$n$个点的无根树，它的$\texttt{prufer}$序列长为$n−2$，而每个位置有$n$种可能性，因此可能的$\texttt{prufer}$序列有$n^{n−2}$种。<br>又由于$\texttt{prufer}$序列与无根树一一对应，因此生成树个数应与$\texttt{prufer}$序列种树相同，即$n^{n−2}$。</li>
+</ul>
+<blockquote>
+<p><strong>对于给定度数为$d_{1∼n}$的一棵无根树共有 $(n-2)!\over \prod_{i&#x3D;1}^{n}(d_i-1)!)$ 种情况。</strong></p>
+</blockquote>
+<ul>
+<li>由上面的性质可以知道，度数为$d_i$的节点会在 $\texttt{prufer}$ 序列中出现$d_i−1$次。<br>则就是要求出$d_i−1$个$i(1\le i\le n)$的全排列个数。<br>而上面那个式子就是可重全排列公式。（即<strong>全排列个数</strong>除以<strong>重复元素内部的全排列个数</strong>）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/avatar.jpeg">
+      <meta itemprop="name" content="龍雪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玲龍的天空">
+      <meta itemprop="description" content="每天进步一点点，幸福快乐一辈子。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 玲龍的天空">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/05/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/" class="post-title-link" itemprop="url">卡特兰数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-05 16:12:57" itemprop="dateCreated datePublished" datetime="2024-03-05T16:12:57+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-07 14:39:31" itemprop="dateModified" datetime="2024-03-07T14:39:31+08:00">2024-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">组合数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="/img/catalan1.png"><br><img src="/img/catalan2.png"></p>
 
       
     </div>
@@ -248,12 +389,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玲龍的家">
+      <meta itemprop="name" content="玲龍的天空">
       <meta itemprop="description" content="每天进步一点点，幸福快乐一辈子。">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 玲龍的家">
+      <meta itemprop="name" content="undefined | 玲龍的天空">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -268,9 +409,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-03-05 15:54:16 / Modified: 22:13:59" itemprop="dateCreated datePublished" datetime="2024-03-05T15:54:16+08:00">2024-03-05</time>
+      <time title="Created: 2024-03-05 15:54:16" itemprop="dateCreated datePublished" datetime="2024-03-05T15:54:16+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-07 14:29:28" itemprop="dateModified" datetime="2024-03-07T14:29:28+08:00">2024-03-07</time>
     </span>
 
   
@@ -285,19 +432,30 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="提升代码水平"><a href="#提升代码水平" class="headerlink" title="提升代码水平"></a>提升代码水平</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/113785">Pro Tips — get them while they are free</a></p>
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/98806">How to practice Competitive Programming [Um_nik version]</a></p>
-<p>一道题该怎么做，平时训练怎么做，做题步骤。</p>
-<h1 id="读题"><a href="#读题" class="headerlink" title="读题"></a>读题</h1><p>不要跳着读，不要省时间粗略的读，捕获关键信息的能力，忽略题目的信息带来很惨重的信息。这段话没有出现数学语言不是关键的跳过。一字一句的读。他没有数学语言，陈述很关键的条件，比赛几个小时不差读题几分钟。都错题，之后的事情非常不好办。找到题目的关键信息，条件、数据范围特殊了然于心，看完提回顾一遍，这道题有什么特殊的地方。</p>
-<h1 id="想题"><a href="#想题" class="headerlink" title="想题"></a>想题</h1><p>从性质、关键条件、性质去做这个题，有逻辑的寻找题目的突破口，而不是到处乱跳。相处一个题目在思维的地图找到那个点，不能随机，脑子中抛出很多想法， 逻辑的思考，不要任凭自己的直觉，准的还好，不准的不准。</p>
-<h2 id="1、有逻辑地思考，从题目中提取关键信息，直接枚举做法"><a href="#1、有逻辑地思考，从题目中提取关键信息，直接枚举做法" class="headerlink" title="1、有逻辑地思考，从题目中提取关键信息，直接枚举做法"></a>1、有逻辑地思考，从题目中提取关键信息，直接枚举做法</h2><p>不会不要慌，不要一下子想着做出题目，很多性质，一个个挖掘出来。尝试很多种思路、方向，位置很隐蔽，不符合第一第二直觉，不要觉得就应该用什么方式数据结构来做，尝试一个思路行不通不知道怎么做，立刻换一个思路，不要纠结在一个死胡同中。DP-》贪心，容斥，枚举，一个一个思路枚举，把脑海中的小技巧都便利一遍，找到合适的。<br>尝试一个两个思路行不通，做不出来，就去看题解，这是大忌，<br><code>一直尝试所有的思路直到黔驴技穷再看题解，独立思考的重要性，少看题解，多想</code><br>自己做出来的题目和题目告诉你怎么做是不一样的，反复思考的重要性</p>
-<h2 id="2、简化问题"><a href="#2、简化问题" class="headerlink" title="2、简化问题"></a>2、简化问题</h2><ul>
-<li>缩小数据范围，多次询问-单次询问</li>
-<li>图不会做，简化成树链，图-树-链。</li>
-<li>数多少个合法方案-简化成判断一个方案是否合法。<br>尝试做一个简化，解决一个化简的问题，可能会发现适用原问题的关键性质。OI题，对着部分分，CF自己编部分分弱化条件，得到启发，实在不行，手摸一下小样例，博弈题，给出方法和过程，进来是否合法，通过模拟一下样例的过程更加了解问题的结构。不要只顾着机械的计算，NOIP考场上只会模拟样例，对着题意的条件算无用。再计算的同时停下来观察思考模拟的过程，思考博弈的性质，最优化长得非常像贪心或者DP之类的。<br>也可以打表找规律，看题解之前前，千万不要再自己尝试所有办法之前不要看题解。<br>题目错综复杂，可以在纸张电脑上记录下来，还是不会做，再重新读题，很常见，再题目没有读好的时候发生。</li>
+<p>一道题该怎么做，平时训练怎么做，做题步骤是怎样的。</p>
+<h1 id="看一道题"><a href="#看一道题" class="headerlink" title="看一道题"></a>看一道题</h1><p>拿到一道题我们不要想着跳着读，不要想着省时间粗略的读，要有捕获关键信息的能力，如果忽略题目关键或隐藏的信息会给后面的做题带来很惨重的后果。如果一段话没有出现数学语言或不是关键的语言可以跳过。关键语言要一字一句的读。尤其是题目陈述很关键的条件，比赛几个小时不差读题几分钟。如果读错题之后的事情非常不好办。找到题目的关键信息，题目的条件、数据范围特殊性质了都然于心，看完题可以在顺便回顾一遍，这道题有什么特殊的地方。</p>
+<h1 id="想题"><a href="#想题" class="headerlink" title="想题"></a>想题</h1><p>从前面读题中找到题目的关键条件、性质开始去做这个题，有逻辑的寻找题目的突破口，而不是到处乱跳任凭思维的缰绳到处飞跃，就相当于在思维的地图找到一个点，随机找肯定不行，脑子中抛出很多想法， 要有逻辑的思考，不要任凭自己的直觉，准的还好，不准的就麻烦了。</p>
+<h2 id="有逻辑地思考，从题目中提取关键信息，直接枚举做法"><a href="#有逻辑地思考，从题目中提取关键信息，直接枚举做法" class="headerlink" title="有逻辑地思考，从题目中提取关键信息，直接枚举做法"></a>有逻辑地思考，从题目中提取关键信息，直接枚举做法</h2><p>不会不要慌，不要一下子想着就能做出题目，题目的很多性质，要慢慢一个个挖掘出来。尝试多种思路、方向，有的题目关键性质藏的很隐蔽，不符合我们的第一第二直觉，不要觉得题目就应该用什么算法或者就应该用什么数据结构来做，如果尝试一个思路行不通不知道怎么做，就应该立马换一个思路，不要纠结在一个死胡同中。如果DP不行就换成贪心，容斥，枚举，一个一个思路枚举，把脑海中的小技巧都便利一遍，找到合适的。<br>很多同学一开始尝试一个两个思路行不通，做不出来，就去看题解，这是大忌；要一直尝试所有的思路直到黔驴技穷再看题解，信息学中独立思考深入思考能力的重要性，少看题解多自己动脑想，自己独立做出来写出代码AC的题目和看题解告诉你怎么做似懂非懂自己代码都不实现的效果是不一样的，反复思考的极端重要性。</p>
+<h2 id="善于简化问题"><a href="#善于简化问题" class="headerlink" title="善于简化问题"></a>善于简化问题</h2><ul>
+<li>缩小数据范围，多次询问改成单次询问</li>
+<li>图不会做，那么久简化成树链，图-树-链。</li>
+<li>数多少个合法方案不会做就简化成判断一个方案是否合法。<br>尝试做一个简化，解决一个化简的问题，可能会发现适用原问题的关键性质。OI题，对着部分分来挖掘性质做，CF自己编部分分弱化条件，得到启发，实在不行，手摸一下小样例，博弈题，给出方法和过程，进来是否合法，通过模拟一下样例的过程更加了解问题的结构。不要只顾着机械的计算，NOIP考场上只会模拟样例也不行。在计算的同时停下来观察思考模拟的过程，思考博弈的性质，最优化长得非常像贪心或者DP之类的。<br>也可以打表找规律，千万不要在自己尝试所有办法之前看题解。<br>题目错综复杂，可以在纸张电脑上记录下来，还是不会做，再重新读题，很常见，在题目没有读好的时候经常发生。</li>
 </ul>
-<h1 id="捋思路"><a href="#捋思路" class="headerlink" title="捋思路"></a>捋思路</h1><p>想出来很兴奋，可能想直接写，保持冷静，把思路彻底捋清楚，think twice, code once。DP的状态，转移的设计需要把所有的细节想清楚再写。<br>数据结构题，分好几个板块，版块怎么做怎么整合起来。对于某一个难写的地方，怎么好写。会一个题，做法麻烦稍微develop一下变成简单做法，心急没有想，直接写写不出来，调试不出来，常数太大，发展这个做法变得更好些常数更小。<br>真实打比赛的时候，部分分，可能一档一档部分分的想，想完部分分的时候，定制比赛策略，策略可以灵活调整，怎么选择写哪一个部分分，预估写每一档部分分的时间和分值比对，在纸上罗列下来，冷静下来相信自己的直觉第一判断。分值比对，选定一个性价比最高当前的性价比最高最优策略，坚定的执行它，不要踌躇不前犹犹豫豫。CF没有部分分的比赛，到底写多少写哪个比较好。比赛技巧</p>
-<h1 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h1><p>每时每刻保持专注状态，写代码是机械化的过程，写着写着就变成刷着刷着变成自动挡，下意识的在哪里写，很容易写出很离谱的错误，无意识写代码 -&gt; 专注的写代码，在比赛中太紧张压力太大，压力扰乱写代码，最好就是放松且专注的写代码。<br>写代码非常常用的技巧：非常难写的部分先用暴力部分暴力写出来，写出一部分暴力之后只剩一部分暴力，拿样例测出来，改成想要实现的东西。信心大增，暴力-》正解，小暴力-高分暴力，暴力过样例 -&gt;，改成正解，获得启发，想出更好写的写法更优秀的实现方式。只会一个题的暴力。直接想正解，先写暴力。写着写着原来还可以这么些，没有想到的地方通往正解的一个突破口。</p>
-<h1 id="调代码"><a href="#调代码" class="headerlink" title="调代码"></a>调代码</h1><p>冷静下俩，不要绝望不要做无意义的输出调试。在你以为很容易写错的地方，其实出错的概率不大，在完全没有想到的地方出错，在容易出错的地方写代码实现的地方小心，比较容易的地方更容易进入刷牙的自动挡里，未曾涉足想到的会出错的地方。写一份代码停下来，瞪眼调试，尤其是专注度比较低的时候，先看一下有没有出错。实在调不出来，对拍，不要随机数据，要造一些更强的数据。对拍,直接随会挂分。</p>
-<h1 id="A题后"><a href="#A题后" class="headerlink" title="A题后"></a>A题后</h1><p>不要直接关掉这个题，先反思，什么地方花了我太久，本应该很快想到但是很久。本来以为写代码很快但是像太久，看一下别人的代码。这个题值得记录用文字记录的地方很好的习惯。价值没那么高的不用记录，记录关键有用的信息。</p>
+<h1 id="想出做法"><a href="#想出做法" class="headerlink" title="想出做法"></a>想出做法</h1><p>很多同学想出题目的做法可能会很兴奋，就想直接rush写出来，保持冷静，把思路彻底捋清楚，think twice, code once。比如DP的状态，转移的设计需要把所有的细节想清楚再写。<br>数据结构题，分好几个板块，每个版块怎么做版块之间怎么整合起来。对于某一个难写的地方，怎么好写。有时候我们会做一个题，但是做法比较麻烦，但是如果稍微继续深入参考挖掘一下develop一下变成简单做法，心急没有想，直接写写不出来，调试不出来，或常数太大，再深入发展一下这个做法变得更好写常数更小些。<br>真实打比赛的时候，部分分，可以一档一档部分分的想，想完部分分的时候正解的思路往往也会涌现出来，定制比赛策略，策略可以灵活调整，怎么选择写哪一个部分分，预估写每一档部分分的时间和分值比对，在纸上罗列下来，冷静下来相信自己的直觉第一判断。分值比对，选定一个性价比最高当前的性价比最高最优策略，坚定的执行它，不要踌躇不前犹犹豫豫。CF没有部分分的比赛，到底写多少写哪个比较好。比赛技巧</p>
+<h1 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h1><p>每时每刻保持专注状态，写代码是机械化的过程，写着写着就变成像刷牙一样变成自动挡，下意识的在那里写，很容易写出很离谱的错误，无意识写代码变成专注的写代码，在比赛中太紧张压力太大，压力扰乱写代码，最好就是放松且专注的写代码。<br>写代码非常常用的技巧：非常难写的部分先用暴力部分暴力写出来，写出一部分暴力之后只剩一部分暴力，拿样例测出来，改成想要实现的东西。信心大增，暴力-》正解，小暴力-高分暴力，暴力过样例再改成正解，获得启发，想出更好写的写法更优秀的实现方式。只会一个题的暴力。直接想正解，先写暴力。写着写着原来还可以这么些，没有想到的地方通往正解的一个突破口。</p>
+<h1 id="调代码"><a href="#调代码" class="headerlink" title="调代码"></a>调代码</h1><p>冷静下来，不要绝望着做无意义的输出调试。在你以为很容易写错的地方，其实出错的概率不大，在完全没有想到的地方出错，在容易出错的地方写代码实现的地方小心，比较容易的地方更容易进入刷牙的自动挡里，未曾涉足想到的会出错的地方。写一份代码停下来，瞪眼调试，尤其是专注度比较低的时候，先看一下有没有出错。实在调不出来，对拍，不要随机数据，要造一些更强的数据。对拍,直接随会挂分。</p>
+<h1 id="做出来了"><a href="#做出来了" class="headerlink" title="做出来了"></a>做出来了</h1><p>不要直接关掉这个题，先反思，什么地方花了我太久，本应该很快想到但是很久才想到这个点。本来以为写代码很快但是花了太久，看一下别人的代码题解思路。这个题值得用文字记录的地方，写题解博客是一个很好的习惯。价值没那么高的不用记录，记录关键有用的信息。</p>
+<p>先把CCF 官方的题做掉，做题的价值最高，拟合可能会出什么样的题。atcoder Codeforces JOI JOISC<br>全真模拟官方真题<br>pjudge.ac</p>
+<p>做模拟赛，全真的比赛环境，打任何比赛都有帮助，atcoder cf都有帮助。<br>网上各国的OI 比赛，自觉，VP 一场比赛，不要寻求外界的帮助，坚持到底，不要中途放弃，锻炼好比赛的心态。模拟赛有不部分分，考场合理时刻写部分分，临场设计策略问题。<br>费尽心思的部分分。任意拿一套题过来，想每个题的部分分，预估写多久。看得到的分能不能达到预知的效果。</p>
+<p>最大最有效的方式：考NOIP 多经历惨痛的事情适合比赛的策略。多磨练自己。比赛心态，真刀实枪，好好刷题。</p>
+<p>信息闭塞：关注知名活跃的竞赛选手，还有比赛，还有这个题，多参与社群的讨论，获得更多的信息。UOJ 的群，比较活跃的竞赛的讨论的群，获得算法竞赛信息，如果有问题，大胆私聊。多关注博客</p>
+<p>挑些题打印出来，非常好非常详尽。<br>博客打印带到学校去看。<br>利用文化课的空余时间，不想听，偷偷的想一道题，看打印材料，作业不想写，混水摸鱼。</p>
+<p>两天一场模拟赛，atcoder CF第二天补题</p>
+<p>提高思维能力，独立积极思考，在用尽一切方法前不要看题解。</p>
+<p>一直抄题解还不如想出来两三道题来的提升快。</p>
+<p>初二暑假杭二训练，一道题想几个小时几天，实在不会的情况下再去看题解，如果你做了一个题看了题解。不会记住，自己想出来的做法印象深刻，尝试各种方法做一道题的时候，所有失败和成功对方法更深刻，不能做某一个题有更好的感知，即使没有想出来也有提升。看题解肌肉的动作，锻炼肌肉的过程在自己做题的过程中。思考的时候一定要有自信，别人觉得难很难。不要退缩，确实做不出俩。</p>
+<p>天赋：开始学OI 的时候，中等水平，学的没意思，不想学，坚持下来。AGC 看天赋，思维能力的肌肉被锻炼的多大多结实。需要用多大的努力时间培养良好的思维习惯，只要一个人能够全神贯注思考足够就，达到足够高的水平。停一段时间NOIP 前高一入学前，不要全天听，有必要的文化课停。高代，OI 中的数学组合数学，题单arc agc abc JOI JOISC USACO CF div1 div2,针对性的刷题，CF tag filter，CDQ 分治的题单，识别出算法的过程，杂题。<br>比赛前调整心态：不要期待自己一定要怎样，题目的难度无法控制的，放低期待。</p>
+<p>比赛本身：看待比赛比较重，关系升学上什么大学，它可能没有我们想象的那么重要，OI 只是人生经历的很小一部分。只顾着自己的学习，和OI 同样的重要的是：愉悦，让自己休息。交朋友。聊天。找些相干的事，探索自己的兴趣，向内探索，更好认识自己性格优点缺点，调整负面情况，找到是和的生活模式，把OI 搞好考一个好大学同样甚至更重要。考上一个好大学的价值并没有以前那么高，不要给自己压力，不要所有都压在OI 上，把眼光放开放长远。每天开开心心，一天比一天更好。</p>
 
       
     </div>
