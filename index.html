@@ -191,7 +191,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-03-07 14:40:30 / Modified: 15:29:10" itemprop="dateCreated datePublished" datetime="2024-03-07T14:40:30+08:00">2024-03-07</time>
+      <time title="Created: 2024-03-07 14:40:30 / Modified: 15:38:58" itemprop="dateCreated datePublished" datetime="2024-03-07T14:40:30+08:00">2024-03-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -213,11 +213,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>$\texttt{prufer}$序列是一个比较实用的东西，一切与度数有关的树上计数问题，都可以用它以及它的性质来解决。</p>
-<h2 id="转化1：从无根树到-texttt-prufer-序列"><a href="#转化1：从无根树到-texttt-prufer-序列" class="headerlink" title="转化1：从无根树到$\texttt{prufer}$序列"></a>转化1：从无根树到$\texttt{prufer}$序列</h2><p>现在，给你一棵树，我们要考虑如何把它变成prefur序列。<br>我们需要重复进行以下操作，直至树中只剩下两个点：</p>
+          <p>prufer序列是一个比较实用的东西，一切与度数有关的树上计数问题，都可以用它以及它的性质来解决。</p>
+<h2 id="转化1：从无根树到prufer序列"><a href="#转化1：从无根树到prufer序列" class="headerlink" title="转化1：从无根树到prufer序列"></a>转化1：从无根树到prufer序列</h2><p>现在，给你一棵树，我们要考虑如何把它变成prefur序列。<br>我们需要重复进行以下操作，直至树中只剩下两个点：</p>
 <ul>
-<li>找到一个度数为 1，且编号最小的点。（其中编号最小保证了后面将会提到的$\texttt{prufer}$序列的唯一对应性，同时也方便从 $\texttt{prufer}$ 序列转化回无根树）</li>
-<li>把这个点的父亲节点加入序列，然后把这个点从树中删除。然后我们就得到了一个长度为 n − 2 的序列，这就是$\texttt{prufer}$序列。</li>
+<li>找到一个度数为 1，且编号最小的点。（其中编号最小保证了后面将会提到的prufer序列的唯一对应性，同时也方便从 prufer 序列转化回无根树）</li>
+<li>把这个点的父亲节点加入序列，然后把这个点从树中删除。然后我们就得到了一个长度为 n − 2 的序列，这就是prufer序列。</li>
 </ul>
 <p><img src="/img/Prufer1.png"><br>以上面的图为例，我们可以模拟这一过程如下：</p>
 <ul>
@@ -225,51 +225,31 @@
 <li>找到5号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3}。</li>
 <li>找到3号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1}。</li>
 <li>找到6号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1,2}。</li>
-<li>找到2号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1,2,1}。<br>所以，最后得到的$\texttt{prufer}$序列就是{2,3,1,2,1}。</li>
+<li>找到2号节点，将其父结点加入序列，然后将其删去。此时序列：{2,3,1,2,1}。<br>所以，最后得到的prufer序列就是{2,3,1,2,1}。</li>
 </ul>
 <p>代码实现：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">prufer_code</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) cin &gt;&gt; f[i], d[f[i]] ++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i ++, j ++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j ++;</span><br><span class="line">        p[i] = f[j];</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= n - <span class="number">2</span> &amp;&amp; !--d[p[i]] &amp;&amp; p[i] &lt; j) p[i + <span class="number">1</span>] = f[p[i]], i ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="转化2：从-texttt-prufer-序列到无根树"><a href="#转化2：从-texttt-prufer-序列到无根树" class="headerlink" title="转化2：从$\texttt{prufer}$序列到无根树"></a>转化2：从$\texttt{prufer}$序列到无根树</h2><p>还是以刚才那棵树为例，我们要考虑如何把它的prefur序列变回它本身。</p>
+<h2 id="转化2：从prufer序列到无根树"><a href="#转化2：从prufer序列到无根树" class="headerlink" title="转化2：从prufer序列到无根树"></a>转化2：从prufer序列到无根树</h2><p>还是以刚才那棵树为例，我们要考虑如何把它的prefur序列变回它本身。</p>
 <p>我们需要重复进行以下操作，直至点集中只剩下两个点：（初始化所有点都在点集中）</p>
 <ul>
-<li>取出$\texttt{prufer}$序列最前面的元素x。</li>
-<li>取出在点集中的、且当前不在$\texttt{prufer}$序列中的最小元素y。（这恰好呼应了前面提到过的选取编号最小的节点）</li>
+<li>取出prufer序列最前面的元素x。</li>
+<li>取出在点集中的、且当前不在prufer序列中的最小元素y。（这恰好呼应了前面提到过的选取编号最小的节点）</li>
 <li>在x,y之间连接一条边。（注意前面的取出相当于删除）<br>最后，我们在点集中剩下的两个点中连一条边。<br>显然这有n−1条边，且绝对不会形成环，因此它是一棵树，且就是原树。</li>
 </ul>
 <p>以上面的序列为例，我们可以模拟这一过程如下：</p>
 <ul>
-<li>取出2,4连边。此时$\texttt{prufer}$序列：{3,1,2,1}，点集：{1,2,3,5,6,7}。</li>
-<li>取出3,5连边。此时$\texttt{prufer}$序列：{1,2,1}，点集：{1,2,3,6,7}。</li>
-<li>取出1,3连边。此时$\texttt{prufer}$序列：{2,1}，点集：{1,2,6,7}。</li>
-<li>取出2,6连边。此时$\texttt{prufer}$序列：{1}，点集：{1,2,7}。</li>
-<li>取出1,2连边。此时$\texttt{prufer}$序列：{}，点集：{1,7}。</li>
+<li>取出2,4连边。此时prufer序列：{3,1,2,1}，点集：{1,2,3,5,6,7}。</li>
+<li>取出3,5连边。此时prufer序列：{1,2,1}，点集：{1,2,3,6,7}。</li>
+<li>取出1,3连边。此时prufer序列：{2,1}，点集：{1,2,6,7}。</li>
+<li>取出2,6连边。此时prufer序列：{1}，点集：{1,2,7}。</li>
+<li>取出1,2连边。此时prufer序列：{}，点集：{1,7}。</li>
 </ul>
 <p>最后再在1,7间连边，就可以得到原树了。</p>
 <p>代码实现：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">prufer_decode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i ++) cin &gt;&gt; p[i], d[p[i]] ++;</span><br><span class="line">    p[n - <span class="number">1</span>] = n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt; n; i ++, j ++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j ++;</span><br><span class="line">        f[j] = p[i];</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n &amp;&amp; !--d[p[i]] &amp;&amp; p[i] &lt; j) f[p[i]] = p[i + <span class="number">1</span>], i ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="texttt-prufer-序列的性质及相关结论"><a href="#texttt-prufer-序列的性质及相关结论" class="headerlink" title="$\texttt{prufer}$序列的性质及相关结论"></a>$\texttt{prufer}$序列的性质及相关结论</h2><blockquote>
-<p><strong>重要性质：$\texttt{prufer}$序列与无根树一一对应。</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>度数为$d_i$的节点会在$\texttt{prufer}$序列中出现$d_i−1$次。</strong></p>
-</blockquote>
-<ul>
-<li>当某个节点度数为1时，会直接被删掉，否则每少掉一个相邻的节点，它就会在序列中出现1次。因此共出现$d_i−1$次。</li>
-</ul>
-<blockquote>
-<p><strong>一个$n$个节点的完全图的生成树个数为$n^{n−2}$。</strong></p>
-</blockquote>
-<ul>
-<li>对于一个$n$个点的无根树，它的$\texttt{prufer}$序列长为$n−2$，而每个位置有$n$种可能性，因此可能的$\texttt{prufer}$序列有$n^{n−2}$种。<br>又由于$\texttt{prufer}$序列与无根树一一对应，因此生成树个数应与$\texttt{prufer}$序列种树相同，即$n^{n−2}$。</li>
-</ul>
-<blockquote>
-<p><strong>对于给定度数为$d_{1∼n}$的一棵无根树共有 $(n-2)!\over \prod_{i&#x3D;1}^{n}(d_i-1)!)$ 种情况。</strong></p>
-</blockquote>
-<ul>
-<li>由上面的性质可以知道，度数为$d_i$的节点会在 $\texttt{prufer}$ 序列中出现$d_i−1$次。<br>则就是要求出$d_i−1$个$i(1\le i\le n)$的全排列个数。<br>而上面那个式子就是可重全排列公式。（即<strong>全排列个数</strong>除以<strong>重复元素内部的全排列个数</strong>）</li>
-</ul>
+<h2 id="prufer序列的性质及相关结论"><a href="#prufer序列的性质及相关结论" class="headerlink" title="prufer序列的性质及相关结论"></a>prufer序列的性质及相关结论</h2><p><img src="/img/pruferimportants.png"></p>
 
       
     </div>
